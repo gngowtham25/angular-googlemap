@@ -1,0 +1,44 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+        <div class="row mrgTop10">
+          <h4>Google Map Search</h4>
+        </div>
+        <div class="row mrgTop10">
+          <div class="col-md-3 col-sm-12 mrgTop10">
+            <input type='text' class='form-control' [(ngModel)]="sourcePlace" placeholder="Source" autocorrect="off" autocapitalize="off"
+              spellcheck="off" #sourceSearch />
+          </div>
+          <div class="col-md-3 col-sm-12 mrgTop10">
+            <input type='text' class='form-control' [(ngModel)]="destPlace" placeholder="Destination" autocorrect="off" autocapitalize="off"
+              spellcheck="off" #destSearch />
+          </div>
+          <div class="col-md-2 col-sm-12 mrgTop10">
+            <button class="btn btn-primary" (click)="getDirection()">Get Direction</button>
+          </div>
+          <div class="col-md-4 col-sm-12 mrgTop10">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="traveltype" id="traveltypedriv" value="DRIVING" [(ngModel)]="transportMode">
+              <label class="form-check-label" for="traveltypedriv">Driving</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="traveltype" id="traveltypewalk" value="WALKING" [(ngModel)]="transportMode">
+              <label class="form-check-label" for="traveltypewalk">Walking</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="traveltype" id="traveltypetrans" value="TRANSIT" [(ngModel)]="transportMode">
+              <label class="form-check-label" for="traveltypetrans">Transit</label>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="display: block; margin-top: 20px;">
+          <agm-map [latitude]="sourceLatitude" [longitude]="sourceLongitude">
+            <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [panel]="setPanel()" [travelMode]="transportMode"></agm-direction>
+          </agm-map>
+        </div>
+        <div class="row mrgTop10" *ngIf="dir">
+          <h4>Guidelines</h4>
+          <div id="myPanel" class="mrgTop10"></div>
+        </div>
+      </div>
+      

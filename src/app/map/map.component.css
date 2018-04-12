@@ -1,0 +1,42 @@
+agm-map {
+    height: 300px;
+  }
+  
+  img.adp-marker {
+    margin-right: 10px;
+    width: 18px !important;
+    height: 30px !important;
+  }
+  .adp-warnbox{
+    display: none;
+  }
+  
+  .mrgTop10{
+    margin-top:10px;
+  }
+  .adp-details, .adp-legal{
+    display: none;
+  }
+  
+  .adp-placemark, .adp-text{
+    font-weight: bold;
+  }
+  
+  .adp-placemark {
+    background-color: #fff !important;
+    border: none !important;
+  }
+  
+  .adp{
+    font-family: sans-serif;
+  }
+  
+  /* Portrait tablets and small desktops */
+  @media (min-width: 768px) and (max-width: 991px) {
+    [class*='col-']{
+      max-width: 100%;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+    }
+  }
