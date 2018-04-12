@@ -39,13 +39,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
 
-
-    if(localStorage.getItem("directionHistory") != null){
-      this.directionHistory = localStorage.getItem("directionHistory");
-    }
-
-
     this.mapsAPILoader.load().then(() => {
+      this.setCurrentPosition();
       let fromautocomplete = new google.maps.places.Autocomplete(this.sourceSearch.nativeElement, {
 
       });
@@ -78,8 +73,6 @@ export class MapComponent implements OnInit {
       });
     });
 
-    //this.setCurrentPosition();
-
   }
 
   setCurrentPosition() {
@@ -104,17 +97,7 @@ export class MapComponent implements OnInit {
         origin: { lat: this.sourceLatitude, lng: this.sourceLongitude },
         destination: { lat: this.destLatitude, lng: this.destLongitude }
       }
-      //this.addDirection(this.dir);
     }
-  }
-
-  addDirection(dir : any){
-
-    console.log(this.sourcePlace + " " + this.destPlace);
-    this.directionHistory.push(this.dir);
-    
-   // localStorage.setItem("directionHistory",JSON.stringify(this.directionHistory));
-
   }
 
 }
